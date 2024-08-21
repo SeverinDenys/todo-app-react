@@ -10,12 +10,12 @@ function Task({ task, deleteTask }) {
       <p className="task-container-text">{task.text}</p>
       <div className="image-container">
         <img
-          src="/images/icons-edit.png"
+          src="public/images/icons-edit.png"
           alt="Edit icon"
           className="icon"
         />
         <img
-          src="/images/icons-delete.png"
+          src="public/images/icons-delete.png"
           alt="delete icon"
           className="icon"
           onClick={handleClick}

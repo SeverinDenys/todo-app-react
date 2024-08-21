@@ -19,3 +19,5 @@ const [newTask, setNewTask] = useState([]);
 
 
 2 - how to save data in browser after page reload in react?
+
+3 - why the image icons are not displayed in github pages and also as i use the vite?

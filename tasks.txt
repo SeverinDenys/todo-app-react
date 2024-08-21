@@ -1,0 +1,21 @@
+1 - how to remove element from object based on id
+
+why can't i write this way
+1 variant
+
+ const newTaskList = tasks.filter(
+      (task) => task.id !== idToRemove
+    );
+
+task.jsx
+function Task({ task, deleteTask, newTaskList }) {
+  const handleClick = () => {
+    deleteTask(newTaskList[0].id);
+  };
+
+
+2 variant 
+const [newTask, setNewTask] = useState([]);
+
+
+2 - how to save data in browser after page reload in react?

@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 import Task from "./Task";
 function uuidv4() {
@@ -15,8 +15,14 @@ function uuidv4() {
 
 function Tasks() {
   const [inputValue, setInputValue] = useState("");
-  const [tasks, setTasks] = useState([]);
+
+  const storedTasks = JSON.parse(localStorage.getItem("tasks"));
+  const [tasks, setTasks] = useState(storedTasks);
   // const [newTask, setNewTask] = useState([]);
+
+  useEffect(() => {
+    localStorage.setItem("tasks", JSON.stringify(tasks));
+  }, [tasks]);
 
   const handleChange = (event) => {
     setInputValue(event.target.value);

@@ -19,5 +19,10 @@ const [newTask, setNewTask] = useState([]);
 
 
 2 - how to save data in browser after page reload in react?
+Am i allowed to use this?
+https://usehooks.com/usesessionstorage
 
-3 - why the image icons are not displayed in github pages and also as i use the vite?
+solution
+https://www.freecodecamp.org/news/how-to-use-localstorage-with-react-hooks-to-set-and-get-items/
+
+

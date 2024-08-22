@@ -17,7 +17,7 @@ function Tasks() {
   const [inputValue, setInputValue] = useState("");
 
   const storedTasks = JSON.parse(localStorage.getItem("tasks"));
-  const [tasks, setTasks] = useState(storedTasks);
+  const [tasks, setTasks] = useState(storedTasks || []);
   // const [newTask, setNewTask] = useState([]);
 
   useEffect(() => {

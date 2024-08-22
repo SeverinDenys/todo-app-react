@@ -1,50 +1,92 @@
+/* Body Styling */
+
 body {
- background: rgb(143, 100, 32);
+  background: linear-gradient(to right, #f4be8b, #f6777a);
+  font-family: Arial, Helvetica, sans-serif;
+  color: #333;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 70vh;
+  width: 90%;
+  margin: 10px auto;
 }
 
+/* Container Styling */
 .container {
   max-width: 40rem;
-  width: 100%;
   margin: 0 auto;
+  padding: 20px;
+  background: #fff;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
+ 
+
+/* Task Title Styling */
 .tasks {
 background:rgb(57, 56, 56);
-border-radius: 3px;
- 
+border-radius: 10px;
+padding: 10px;
+margin-bottom: 20px;
 }
 
 .tasks .tasks-title {
   color: white;
   text-align: center;
-  padding: 5px 0;
-   
+  font-size: 24px;
+  font-weight: bold;
+  margin: 0;
 }
 
+/* Input Section Styling */
 .input {
-background:red;
-border: red 3px solid;
-display: flex;
+  display: flex;
+  border-radius: 5px;
+  overflow: hidden;
  
 }
 
 .input .input-value {
 width: 100%;
 font-size: 20px;
+padding: 10px;
+ 
+border-right: 1px solid #ccc;
 }
 
+ 
+
+
 .input-add {
-  font-size: 40px;
-  margin-left: 5px;
+  background: #ff5e62;
+  color: white;
+  font-size: 24px;
+  border: none;
+  padding: 10px 20px;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+ 
+.input-add:hover {
+  background: #e24e50;
 }
  
 
+/* Task Container Styling */
 .task-container {
   background: white;
   display: flex;
   justify-content: space-between;
   margin-top: 10px;
+  border-radius: 5px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+ 
 }
+ 
 
 @media only screen and (min-width:768px) {
   .task-container {
@@ -53,21 +95,31 @@ font-size: 20px;
   }
 }
 
+.checkbox {
+  margin-right: 10px;
+  
+}
 
+ 
 
 .task-container-text {
 font-size: 20px;
-margin-left: 4px;
+margin-left: 10px;
+ 
 }
 
 .image-container {
  display: flex;
 align-items: flex-end;
+ 
 }
 
 .icon {
-height: 30px;
-margin-bottom: 4px;
-margin-right: 3px;
+  height: 24px;
+  margin-left: 5px;
+  margin-right: 5px;
+  margin-bottom: 7px;
 
+  cursor: pointer;
+   
 }

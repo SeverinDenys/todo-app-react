@@ -1,13 +1,47 @@
 /* eslint-disable react/prop-types */
 
-function Task({ task, deleteTask }) {
+ 
+
+// Style for the strikethrough effect
+const strikethroughStyle = {
+  textDecoration: "line-through",
+  color: "red",
+};
+
+function Task({ task, deleteTask, toggleTask, }) {
+  // const [isChecked, setIsChecked] = useState(false);
+
+  const checkHandler = () => {
+    toggleTask(task.id, !task.isChecked);
+  };
+
   const handleClick = () => {
     deleteTask(task.id);
   };
   console.log(task);
   return (
     <div className="task-container">
-      <p className="task-container-text">{task.text}</p>
+      <p className="task-container-text">
+        <input
+          type="checkbox"
+          checked={task.isChecked}
+          className="checkbox"
+          onChange={checkHandler}
+        />
+        {/* <p>The checkbox is {isChecked ? "checked" : "unchecked"}</p> */}
+
+        {/* {isChecked ? task.text : "unchecked"} */}
+
+        {/* {isChecked ? task.text : task.text.style.textDecoration = "line-through"} Why this doesn't work? */}
+
+        {task.isChecked ? (
+          <span style={strikethroughStyle}>{task.text} </span> // is there a way to use it just with help of css and not adding it to jsx
+        ) : (
+          task.text /// why like this and not {task.text} ?
+        )}
+
+        {/* {task.text} */}
+      </p>
       <div className="image-container">
         <img
           src="public/images/icons-edit.png"

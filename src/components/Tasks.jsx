@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 import Task from "./Task";
 function uuidv4() {
@@ -15,8 +15,14 @@ function uuidv4() {
 
 function Tasks() {
   const [inputValue, setInputValue] = useState("");
-  const [tasks, setTasks] = useState([]);
+
+  const storedTasks = JSON.parse(localStorage.getItem("tasks"));
+  const [tasks, setTasks] = useState(storedTasks || []);
   // const [newTask, setNewTask] = useState([]);
+
+  useEffect(() => {
+    localStorage.setItem("tasks", JSON.stringify(tasks));
+  }, [tasks]);
 
   const handleChange = (event) => {
     setInputValue(event.target.value);
@@ -29,6 +35,7 @@ function Tasks() {
       {
         text: inputValue,
         id: uuidv4(),
+        isChecked: false,
       },
     ];
     setTasks(newTasks);
@@ -36,21 +43,28 @@ function Tasks() {
   };
   // console.log("tasks text", tasks[0].text);
   const deleteTask = (idToRemove) => {
-    // 1 todo
-    // create new array based on tasks but without task id = id to remove
-    // 1 variant solution
-    setTasks(tasks.filter((task) => task.id !== idToRemove));
-
     // 2 variant solution
-    // const newTaskList = tasks.filter(
-    //   (task) => task.id !== idToRemove
-    // );
+    const newTaskList = tasks.filter(
+      (task) => task.id !== idToRemove
+    );
 
-    // console.log(setTasks(newTaskList)); // why on delete it shows undefined?
+    setTasks(newTaskList);
+  };
 
-    // 2 todo
-    // set new state
-    // write const newTask that will save the value. ? Didn't understand the task
+  const toggleTask = (idToChange, isChecked) => {
+    console.log("toggleTask", isChecked, idToChange);
+    // 1 steo = create new array
+    // if id = id.task = change condition
+    const newTask = tasks.map((item) => {
+      // console.log(item);
+      if (item.id === idToChange) {
+       return {
+        ...item, isChecked : isChecked
+       }
+      }
+      return item;
+    });
+    setTasks(newTask)
   };
 
   return (
@@ -83,6 +97,7 @@ function Tasks() {
           task={task}
           deleteTask={deleteTask}
           index={index}
+          toggleTask={toggleTask}
         />
       ))}
     </>

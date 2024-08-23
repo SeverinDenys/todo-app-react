@@ -19,5 +19,38 @@ const [newTask, setNewTask] = useState([]);
 
 
 2 - how to save data in browser after page reload in react?
+Am i allowed to use this?
+https://usehooks.com/usesessionstorage
 
-3 - why the image icons are not displayed in github pages and also as i use the vite?
+solution
+https://www.freecodecamp.org/news/how-to-use-localstorage-with-react-hooks-to-set-and-get-items/
+
+3- explain me more in detail why we use useEffect in this case for the data
+
+
+4 - how to get the value of container when the checkbox button is clicked?
+
+- create a boolean state 
+- if the checkbox is true - it should change the text style
+reference - https://dev.to/collegewap/how-to-work-with-checkboxes-in-react-44bc
+
+- how to cross the text on checked mark?
+reference- https://www.geeksforgeeks.org/how-to-add-strikethrough-on-text-in-reactjs/
+
+5 - how to check checkbox value in local storage react
+
+1 variant - 
+  useEffect(() => {
+    localStorage.setItem("isChecked", JSON.stringify(isChecked));
+  }, [isChecked]);
+
+ const [isChecked, setIsChecked] = useState(
+    storedCheckedBox || false
+  );
+
+
+ const storedCheckedBox = JSON.parse(
+  localStorage.getItem("isChecked")
+);
+
+it didn't work because the moment I check 1 checkbox after reload every checkbox become checked and if I uncheck 1 checkbox after reload all off them become unchecked

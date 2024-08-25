@@ -18,8 +18,6 @@ function Tasks() {
 
   const storedTasks = JSON.parse(localStorage.getItem("tasks"));
   const [tasks, setTasks] = useState(storedTasks || []);
-  // const [newTask, setNewTask] = useState([]);
-
   useEffect(() => {
     localStorage.setItem("tasks", JSON.stringify(tasks));
   }, [tasks]);
@@ -36,12 +34,13 @@ function Tasks() {
         text: inputValue,
         id: uuidv4(),
         isChecked: false,
+        isEditing: false,
       },
     ];
     setTasks(newTasks);
     setInputValue("");
   };
-  // console.log("tasks text", tasks[0].text);
+
   const deleteTask = (idToRemove) => {
     // 2 variant solution
     const newTaskList = tasks.filter(
@@ -52,19 +51,28 @@ function Tasks() {
   };
 
   const toggleTask = (idToChange, isChecked) => {
-    console.log("toggleTask", isChecked, idToChange);
-    // 1 steo = create new array
-    // if id = id.task = change condition
     const newTask = tasks.map((item) => {
-      // console.log(item);
       if (item.id === idToChange) {
-       return {
-        ...item, isChecked : isChecked
-       }
-      }
-      return item;
+        return {
+          ...item,
+          isChecked: isChecked,
+        };
+      } else return item;
     });
-    setTasks(newTask)
+    setTasks(newTask);
+  };
+
+  const editTask = (idToEdit, isEditing) => {
+    const editedTask = tasks.map((itemToEdit) => {
+      if (itemToEdit.id === idToEdit) {
+        return {
+          ...itemToEdit,
+          isEditing: isEditing,
+        };
+      } else return itemToEdit;
+    });
+    setTasks(editedTask);
+    console.log("Edited Tasks:", editedTask);
   };
 
   return (
@@ -93,11 +101,13 @@ function Tasks() {
       </div>
       {tasks.map((task, index) => (
         <Task
-          key={index}
+          key={task.id}
           task={task}
           deleteTask={deleteTask}
           index={index}
           toggleTask={toggleTask}
+          editTask={editTask}
+          inputValue={inputValue}
         />
       ))}
     </>

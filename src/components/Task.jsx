@@ -1,26 +1,36 @@
 /* eslint-disable react/prop-types */
 
- 
-
 // Style for the strikethrough effect
 const strikethroughStyle = {
   textDecoration: "line-through",
   color: "red",
 };
 
-function Task({ task, deleteTask, toggleTask, }) {
-  // const [isChecked, setIsChecked] = useState(false);
-
+function Task({
+  task,
+  deleteTask,
+  toggleTask,
+  editTask,
+  inputValue,
+}) {
   const checkHandler = () => {
     toggleTask(task.id, !task.isChecked);
+  };
+
+  const editHandler = () => {
+    editTask(task.id, !task.isEditing);
+  };
+
+  const changeContainerBG = {
+    background: task.isEditing ? "yellow" : "white",
   };
 
   const handleClick = () => {
     deleteTask(task.id);
   };
-  console.log(task);
+
   return (
-    <div className="task-container">
+    <div className="task-container" style={changeContainerBG}>
       <p className="task-container-text">
         <input
           type="checkbox"
@@ -28,25 +38,19 @@ function Task({ task, deleteTask, toggleTask, }) {
           className="checkbox"
           onChange={checkHandler}
         />
-        {/* <p>The checkbox is {isChecked ? "checked" : "unchecked"}</p> */}
-
-        {/* {isChecked ? task.text : "unchecked"} */}
-
-        {/* {isChecked ? task.text : task.text.style.textDecoration = "line-through"} Why this doesn't work? */}
 
         {task.isChecked ? (
           <span style={strikethroughStyle}>{task.text} </span> // is there a way to use it just with help of css and not adding it to jsx
         ) : (
           task.text /// why like this and not {task.text} ?
         )}
-
-        {/* {task.text} */}
       </p>
       <div className="image-container">
         <img
           src="public/images/icons-edit.png"
           alt="Edit icon"
           className="icon"
+          onClick={editHandler}
         />
         <img
           src="public/images/icons-delete.png"

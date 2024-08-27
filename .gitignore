@@ -10,9 +10,9 @@ lerna-debug.log*
 node_modules
 dist
 dist-ssr
-tasks.txt
 *.local
  
+tasks.txt
 
 # Editor directories and files
 .vscode/*

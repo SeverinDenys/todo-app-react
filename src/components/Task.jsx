@@ -1,18 +1,12 @@
 /* eslint-disable react/prop-types */
 
 // Style for the strikethrough effect
-const strikethroughStyle = {
+const strikeThroughStyle = {
   textDecoration: "line-through",
   color: "red",
 };
 
-function Task({
-  task,
-  deleteTask,
-  toggleTask,
-  editTask,
-  inputValue,
-}) {
+function Task({ task, deleteTask, toggleTask, editTask }) {
   const checkHandler = () => {
     toggleTask(task.id, !task.isChecked);
   };
@@ -40,7 +34,7 @@ function Task({
         />
 
         {task.isChecked ? (
-          <span style={strikethroughStyle}>{task.text} </span> // is there a way to use it just with help of css and not adding it to jsx
+          <span style={strikeThroughStyle}>{task.text} </span> // is there a way to use it just with help of css and not adding it to jsx
         ) : (
           task.text /// why like this and not {task.text} ?
         )}

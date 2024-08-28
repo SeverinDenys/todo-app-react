@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 
 import Task from "./Task";
+import TaskManager from "./TaskManager";
 function uuidv4() {
   return "10000000-1000-4000-8000-100000000000".replace(
     /[018]/g,
@@ -111,39 +112,14 @@ function Tasks() {
 
   return (
     <>
-      <div className="container">
-        <div className="tasks">
-          <h1 className="tasks-title">Tasks Today</h1>
-        </div>
-        <div className="input">
-          {!editingTask && (
-            <input
-              type="input"
-              value={inputValue}
-              onChange={handleChange}
-              className="input-value"
-              placeholder="add your task here"
-            />
-          )}
-          {editingTask && (
-            <input
-              type="input"
-              value={editingTask.text}
-              onChange={handleEditChange}
-              className="input-value"
-              placeholder="add your task here"
-            />
-          )}
-
-          <button
-            type="submit"
-            className="input-add"
-            onClick={editingTask ? handleEditSubmit : handleSubmit}
-          >
-            {editingTask ? "edit" : "add"}
-          </button>
-        </div>
-      </div>
+      <TaskManager
+        handleEditSubmit={handleEditSubmit}
+        handleChange={handleChange}
+        handleEditChange={handleEditChange}
+        handleSubmit={handleSubmit}
+        inputValue={inputValue}
+        editingTask={editingTask}
+      />
       {tasks.map((task, index) => (
         <Task
           key={task.id}

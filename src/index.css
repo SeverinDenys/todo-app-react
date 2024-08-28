@@ -95,6 +95,9 @@ border-right: 1px solid #ccc;
   }
 }
 
+.task-container-editing {
+  background: yellow
+}
 .checkbox {
   margin-right: 10px;
   

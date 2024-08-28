@@ -15,16 +15,20 @@ function Task({ task, deleteTask, toggleTask, editTask }) {
     editTask(task.id, !task.isEditing);
   };
 
-  const changeContainerBG = {
-    background: task.isEditing ? "yellow" : "white",
-  };
+  // const changeContainerBG = {
+  //   background: task.isEditing ? "yellow" : "white",
+  // };
 
   const handleClick = () => {
     deleteTask(task.id);
   };
 
   return (
-    <div className="task-container" style={changeContainerBG}>
+    <div
+      className={`task-container ${
+        task.isEditing ? "task-container-editing" : ""
+      }`}
+    >
       <p className="task-container-text">
         <input
           type="checkbox"

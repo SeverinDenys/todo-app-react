@@ -1,47 +1,8 @@
-1 - useEffect(() => {
-  localStorage.setItem("tasks", JSON.stringify(tasks));
-  const oneEditingTask = tasks.find((element) => element.isEditing);
-  setIditingTask(oneEditingTask);
-}, [tasks]);
-
-why we use useEffect here. Can't we do it without useEffect? How do you know when you should use UseEffect?
-
-This useEffect hook is triggered every time the task state changes. It: Saves the current list of tasks in localStorage so that they don't disappear when the page is refreshed.
-Looks for the task in the list that is in the editing state (isEditing: true) and sets it to editTask.
-
-2 - in which cases we need to use this syntax. I mean the array of objects and manually write there all the key/values we need? How do you even know that it should be written that way?
-
-const handleSubmit = (e) => {
-  e.preventDefault();
-  const newTasks = [
-    ...tasks,
-    {
-      text: inputValue,
-      id: uuidv4(),
-      isChecked: false,
-      isEditing: false,
-    },
-  ];
-  setTasks(newTasks);
-  setInputValue("");
-};
-
  
-
-3 - main struggles:
-Getting to know when to use props and where specifically to pass it.
-A lot of mapping that all manipulate initial tasks
-UseEffect
 
 4 - why tasks.txt doesn't add to gitignore and is still showed in my github account?
 
-5 - tasks.jsx line 33 - why we use onchange={checkHandler} . if remove - nothing changes
-
-6 - how to add styles in jsx? like line 37? Also explain line 39
-
-7- в task.jsx i have a button. How you get the logic in your head? Cause basically i have this:
-1 in task.jsx - create a button and add onclickEvent
-2 - inside task.jsx create a handleClick, that will only work if it's transfared throught the props from Tasks.jsx, same for editHandler. I you need to know in advance that it will take a function with n amount of parameters?
-3 -we create the function inside the parent Tasks.jsx with custom parameters, create the logic only only then transfer it as a props to Task.jsx even though we go the button and onclickEvent where created first in Task.jsx.
-
+ 
 8 - tasks.jsx  line 19. Why null and not   or ''. What is the difference and can't something be used be default all the time?
+
+9 - why it doesn't show result on github pages?

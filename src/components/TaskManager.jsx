@@ -1,5 +1,13 @@
 /* eslint-disable react/prop-types */
-export default function TaskManager({ handleChange, inputValue, handleEditChange, editingTask, handleEditSubmit, handleSubmit }) {
+export default function TaskManager({
+  handleChange,
+  inputValue,
+  handleEditChange,
+  editingTask,
+  handleEditSubmit,
+  handleSubmit,
+ 
+}) {
   return (
     <div className="container">
       <div className="tasks">

@@ -5,7 +5,7 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "vite build && mkdir /dist/public && cp -r /public /dist/public ",
+    "build": "vite build && cp -r ./public ./dist/public ",
     "lint": "eslint .",
     "preview": "vite preview",
     "deploy": "gh-pages -d dist"

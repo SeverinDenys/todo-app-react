@@ -1,6 +1,6 @@
 # Simple Todo App
 
-just a simple todo app
+just a simple todo app using React and Typescript
 
 ## Features
 

@@ -1,12 +1,22 @@
 /* eslint-disable react/prop-types */
 
+import { TaskType } from "./../types";
+
+type TaskProps = {
+  task: TaskType;
+  deleteTask: (idToRemove: string) => void;
+  toggleTask: (idToChange: string, isChecked: boolean) => void;
+  editTask: (idToEdit: string, isEditing: boolean) => void;
+  index: number;
+};
+
 // Style for the strikethrough effect
 const strikeThroughStyle = {
   textDecoration: "line-through",
   color: "red",
 };
 
-function Task({ task, deleteTask, toggleTask, editTask }) {
+function Task({ task, deleteTask, toggleTask, editTask }: TaskProps) {
   const checkHandler = () => {
     toggleTask(task.id, !task.isChecked);
   };
@@ -14,10 +24,6 @@ function Task({ task, deleteTask, toggleTask, editTask }) {
   const editHandler = () => {
     editTask(task.id, !task.isEditing);
   };
-
-  // const changeContainerBG = {
-  //   background: task.isEditing ? "yellow" : "white",
-  // };
 
   const handleClick = () => {
     deleteTask(task.id);
